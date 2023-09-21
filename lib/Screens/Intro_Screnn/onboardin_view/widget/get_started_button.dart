@@ -1,4 +1,4 @@
-import 'package:ecommerce_app_complete_ui_project/Screens/Home_View/home_view.dart';
+import 'package:ecommerce_app_complete_ui_project/Screens/bottom_navbar/bottom_navbar.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -9,7 +9,7 @@ class GetStartedButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return  GestureDetector(
       onTap: () {
-        Navigator.push(context, MaterialPageRoute(builder: (_)=> const HomeView()));
+        Navigator.push(context, MaterialPageRoute(builder: (_)=> const MainMenuView()));
       },
       child: Container(
          decoration: BoxDecoration(

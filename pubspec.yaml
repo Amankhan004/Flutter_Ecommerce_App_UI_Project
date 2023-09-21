@@ -40,6 +40,7 @@ dependencies:
   lottie: ^2.6.0
   flutter_svg: ^2.0.7
   animated_notch_bottom_bar: ^1.0.0
+  google_nav_bar: ^5.0.6
 
 dev_dependencies:
   flutter_test:
