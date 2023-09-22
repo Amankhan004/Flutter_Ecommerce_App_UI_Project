@@ -1,6 +1,7 @@
 import 'package:ecommerce_app_complete_ui_project/Screens/Home_View/widgets/drop_down.dart';
 import 'package:ecommerce_app_complete_ui_project/Screens/Home_View/widgets/offers_container.dart';
 import 'package:ecommerce_app_complete_ui_project/Screens/Home_View/widgets/recommended_view.dart';
+import 'package:ecommerce_app_complete_ui_project/Screens/Home_View/widgets/recommended_view_02.dart';
 import 'package:ecommerce_app_complete_ui_project/Screens/Home_View/widgets/search_bar.dart';
 import 'package:ecommerce_app_complete_ui_project/resources/app_Icons.dart';
 import 'package:ecommerce_app_complete_ui_project/utils/App_colors/colors.dart';
@@ -58,14 +59,17 @@ class _HomeViewState extends State<HomeView> {
                 ),
                 const OffersContainers(),
                 Padding(
-                  padding: const EdgeInsets.only(right: 120),
-                  child: Text(
-                    'Recommended',
-                    style: GoogleFonts.manrope(
-                      color: const Color(0xFF1E222B),
-                      fontSize: 30,
-                      fontWeight: FontWeight.w400,
-                      height: 1.27,
+                  padding: const EdgeInsets.only(left: 20),
+                  child: Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      'Recommended',
+                      style: GoogleFonts.manrope(
+                        color: const Color(0xFF1E222B),
+                        fontSize: 30,
+                        fontWeight: FontWeight.w400,
+                        height: 1.27,
+                      ),
                     ),
                   ),
                 ),
@@ -82,7 +86,10 @@ class _HomeViewState extends State<HomeView> {
                     ),
                   ),
                 ),
-                const Recommended(),
+                const RecommendedTwo(),
+               const SizedBox(
+                  height: 10,
+                )
               ],
             ),
           ),

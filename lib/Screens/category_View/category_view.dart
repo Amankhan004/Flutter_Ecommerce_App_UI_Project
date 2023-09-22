@@ -37,7 +37,7 @@ class MyCategoryView extends StatelessWidget {
                             ),
                           ),
                           const Spacer(),
-                          Container(
+                          SizedBox(
                             width: 100,
                             child: Row(
                               children: [
@@ -70,7 +70,7 @@ class MyCategoryView extends StatelessWidget {
                                 ),
                               ),
                               TextSpan(
-                                text: 'By Category',
+                                text: 'By Marts&Shops',
                                 style: TextStyle(
                                   color: Color(0xFFFAFAFC),
                                   fontSize: 50,
@@ -92,7 +92,7 @@ class MyCategoryView extends StatelessWidget {
                   child: Padding(
                     padding: EdgeInsets.only(top: 30),
                     child: CategoryOffers(),
-                  ), // Your CategoryOffers widget here
+                  ), 
                 ),
               ),
             ],

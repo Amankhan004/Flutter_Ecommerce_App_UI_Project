@@ -12,6 +12,10 @@ static const Color lightYellow= Color(0xFFFFC73A) ;
 static const Color darkYellow = Color(0xFFF9B023);
 static const Color lightGrey = Color(0xFFE4DDCB);
   static const Color textColor = Color(0xff1E222B);
+  static const Color cardColor =  Color.fromARGB(255, 238, 240, 243);
+ 
+
+
 
 
 

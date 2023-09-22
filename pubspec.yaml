@@ -69,6 +69,7 @@ flutter:
     - Assets/App_images/
     - lib/utils/
     - Assets/App_Icons/
+    - Assets/App_images/main_images/
   
 
   # An image asset can refer to one or more resolution-specific "variants", see

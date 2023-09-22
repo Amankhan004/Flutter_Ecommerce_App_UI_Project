@@ -1,17 +1,17 @@
-import 'package:ecommerce_app_complete_ui_project/resources/items_data.dart';
+import 'package:ecommerce_app_complete_ui_project/Data/category_data/restaurants_data.dart';
 import 'package:ecommerce_app_complete_ui_project/utils/App_colors/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 class CategoryItemDetails extends StatefulWidget {
   const CategoryItemDetails({
-    super.key,
+    Key? key,
     this.selected,
     this.selectedCategory,
   });
 
   final String? selected;
-  final selectedCategory;
+  final RestaurantData? selectedCategory;
 
   @override
   State<CategoryItemDetails> createState() => _CategoryItemDetails();
@@ -19,10 +19,7 @@ class CategoryItemDetails extends StatefulWidget {
 
 class _CategoryItemDetails extends State<CategoryItemDetails> {
   static final List<String> typeof = [
-    "Popular",
-    "Low Price",
-    "Discounted",
-    "Most Expensive",
+    "All",
     "Popular",
     "Low Price",
     "Discounted",
@@ -30,14 +27,18 @@ class _CategoryItemDetails extends State<CategoryItemDetails> {
   ];
 
   List<String> selectedtype = [];
+
   @override
   Widget build(BuildContext context) {
+    final restaurant = widget.selectedCategory;
+
     return Scaffold(
       body: SafeArea(
         child: Column(
           children: [
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 12.5),
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 10, vertical: 12.5),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -65,7 +66,7 @@ class _CategoryItemDetails extends State<CategoryItemDetails> {
                   children: typeof
                       .map((type) => Padding(
                             padding: const EdgeInsets.symmetric(
-                                horizontal: 5.0, vertical: 10),
+                                horizontal: 5.0, vertical: 1),
                             child: FilterChip(
                                 label: Text(type),
                                 selectedColor: const Color(0xFFF9B023),
@@ -92,84 +93,78 @@ class _CategoryItemDetails extends State<CategoryItemDetails> {
                   child: GridView.builder(
                     physics: const BouncingScrollPhysics(),
                     shrinkWrap: true,
-                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 2,
-                      crossAxisSpacing: 14.0,
-                      mainAxisSpacing: 10.0,
+                      crossAxisSpacing: 8.0,
+                      mainAxisSpacing: 8.0,
                       childAspectRatio: 1,
                     ),
-                    itemCount: categoryItems.length,
-                    itemBuilder: (context, index) {
-                      final item = categoryItems[index];
+                    itemCount: restaurant?.items.length ?? 0,
+                    itemBuilder: (context, itemIndex) {
+                      final item = restaurant?.items[itemIndex];
+                      if (item == null) return Container();
                       return Container(
                         margin: const EdgeInsets.all(5),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(12),
-                          color: Color.fromARGB(255, 241, 241, 243),
-                          border: Border.all(
-                            width: 0.5,
-                            color: const Color(0xFFF7F8FA),
-                          ),
+                          color: AppColors.cardColor,
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black.withOpacity(0.1),
+                              spreadRadius: 1,
+                              blurRadius: 3,
+                              offset: Offset(0, 1),
+                            ),
+                          ],
                         ),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            // Stack to add the plus button
-                            Stack(
-                              
-                              children: [
-                                SizedBox(
-                                  height: 100,
-                                  width: 800,
-                                  child: SvgPicture.asset(item.imageAsset),
-                                ),
-                                // Circular button with plus icon
-                                Positioned(
-                                  bottom: 0,
-                                  right: 10,
-                                  
-                                  child: GestureDetector(
-                                    onTap: () {
-                                      // Handle adding the item to the cart here
-                                      setState(() {
-                                        // Add item to cart
-                                      });
-                                    },
-                                    child: Container(
-                                      decoration: BoxDecoration(
-                                        shape: BoxShape.circle,
-                                        color: AppColors.lightBlue,
-                                        boxShadow: [
-                                          BoxShadow(
-                                            color: Colors.black.withOpacity(0.1),
-                                            spreadRadius: 1,
-                                            blurRadius: 3,
-                                            offset: Offset(0, 1),
+                            SizedBox(
+                              height: 110,
+                              child: Stack(
+                                
+                                children: [
+                                  SizedBox(
+                                    height: 100,
+                                    width: 800,
+                                    child: SvgPicture.asset(
+                                      'Assets/App_images/Image Icon.svg',
+                                    ),
+                                  ),
+                                  Positioned(
+                                    bottom: 0,
+                                    right: 8,
+                                    child: GestureDetector(
+                                      onTap: () {
+                                        setState(() {});
+                                      },
+                                      child: Container(
+                                        decoration: const BoxDecoration(
+                                          shape: BoxShape.circle,
+                                          color: AppColors.lightBlue,
+                                        ),
+                                        child: const Padding(
+                                          padding: EdgeInsets.all(8.0),
+                                          child: Icon(
+                                            Icons.add,
+                                            color: Colors.white,
                                           ),
-                                        ],
-                                      ),
-                                      child: Padding(
-                                        padding: const EdgeInsets.all(8.0),
-                                      
-                                        child: SvgPicture.asset(
-                                          'Assets/App_images/plus-outline (3) 1.svg', // Replace with your SVG image path
-                                          width: 16,
-                                          height: 16,
-                                          
                                         ),
                                       ),
                                     ),
                                   ),
-                                ),
-                              ],
+                                ],
+                              ),
                             ),
                             const SizedBox(
                               height: 8,
                             ),
                             Text(
-                              item.name,
+                              item.itemName,
                               style: const TextStyle(
-                                fontSize: 14,
+                                fontSize: 17,
                                 fontWeight: FontWeight.w600,
                                 color: Colors.black,
                               ),
@@ -177,8 +172,8 @@ class _CategoryItemDetails extends State<CategoryItemDetails> {
                             Text(
                               '\$${item.price.toStringAsFixed(2)}',
                               style: const TextStyle(
-                                fontSize: 12,
-                                fontWeight: FontWeight.w500,
+                                fontSize: 16,
+                                fontWeight: FontWeight.w600,
                                 color: Color.fromARGB(255, 126, 125, 125),
                               ),
                             ),

@@ -2,25 +2,25 @@ import 'package:ecommerce_app_complete_ui_project/Data/main_data/item_data.dart'
 import 'package:ecommerce_app_complete_ui_project/utils/App_colors/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-class Recommended extends StatelessWidget {
-  const Recommended({super.key});
+
+class RecommendedTwo extends StatelessWidget {
+  const RecommendedTwo({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Container(
           margin: const EdgeInsets.only(top: 10),
-          
           height: 250,
           child: ListView.builder(
             physics: const BouncingScrollPhysics(),
             shrinkWrap: true,
             scrollDirection: Axis.horizontal,
-            itemCount: itemsList.length, 
+            itemCount: itemList2.length,
             itemBuilder: (context, index) {
-              final item = itemsList[index];
+              final item = itemList2[index];
               return Container(
                 margin: const EdgeInsets.all(5),
                 height: 210,
@@ -41,10 +41,8 @@ class Recommended extends StatelessWidget {
                       width: 160,
                       child: Image.asset(
                         item.imageAsset,
-                      
                       ),
                     ),
-                   
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
@@ -63,7 +61,8 @@ class Recommended extends StatelessWidget {
                           style: const TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.w500,
-                        ),),
+                          ),
+                        ),
                         Container(
                           margin: const EdgeInsets.only(top: 10),
                           height: 46,
@@ -88,36 +87,35 @@ class Recommended extends StatelessWidget {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
-                              Container(
-                                // margin: const EdgeInsets.only(left: 16),
-                                child: Center(
-                                  child: RichText(
-                                    text: TextSpan(
-                                      children: [
-                                      const  TextSpan(
-                                          text: 'Unit',
-                                          style: TextStyle(
-                                            fontSize: 14,
-                                            fontWeight: FontWeight.w400,
-                                            color: Colors.black,
-                                          ),
+                              Center(
+                                child: RichText(
+                                  text: TextSpan(
+                                    children: [
+                                      const TextSpan(
+                                        text: 'Unit',
+                                        style: TextStyle(
+                                          fontSize: 14,
+                                          fontWeight: FontWeight.w400,
+                                          color: Colors.black,
                                         ),
-                                        TextSpan(
-                                          text: ' \$${item.price.toStringAsFixed(2)}', // Format price to two decimal places
-                                          style:const TextStyle(
-                                            fontSize: 18,
-                                            fontWeight: FontWeight.w600,
-                                            color: Colors.black,
-                                          ),
+                                      ),
+                                      TextSpan(
+                                        text:
+                                            ' \$${item.price.toStringAsFixed(2)}', 
+                                        style: const TextStyle(
+                                          fontSize: 18,
+                                          fontWeight: FontWeight.w600,
+                                          color: Colors.black,
                                         ),
-                                      ],
-                                    ),
+                                      ),
+                                    ],
                                   ),
                                 ),
                               ),
+                            
                               GestureDetector(
                                 onTap: () {
-                                  // Handle adding the item to the cart here
+                                  
                                 },
                                 child: Container(
                                   decoration: BoxDecoration(
@@ -135,7 +133,7 @@ class Recommended extends StatelessWidget {
                                   child: Padding(
                                     padding: const EdgeInsets.all(8.0),
                                     child: SvgPicture.asset(
-                                      'Assets/App_images/plus-outline (3) 1.svg', // Replace with your SVG image path
+                                      'Assets/App_images/plus-outline (3) 1.svg', 
                                       width: 16,
                                       height: 16,
                                     ),
@@ -149,13 +147,11 @@ class Recommended extends StatelessWidget {
                     ),
                   ],
                 ),
-                
               );
             },
           ),
         )
       ],
     );
-    
   }
 }
