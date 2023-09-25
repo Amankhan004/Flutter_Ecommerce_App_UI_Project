@@ -26,39 +26,75 @@ class _CategoryItemDetails extends State<CategoryItemDetails> {
     "Most Expensive",
   ];
 
-  List<String> selectedtype = [];
+  List<String> selectedtype = ["All"]; // Initialize with "All" selected.
 
   @override
   Widget build(BuildContext context) {
     final restaurant = widget.selectedCategory;
 
+    // Function to filter items based on the selected filter type.
+    List<ItemData> filteredItems() {
+      if (selectedtype.contains("All")) {
+        return restaurant?.items ?? [];
+      } else if (selectedtype.contains("Popular")) {
+        return restaurant?.items.where((item) => item.isPopular).toList() ?? [];
+      } else if (selectedtype.contains("Low Price")) {
+        return restaurant?.items.where((item) => item.price <= 3.0).toList() ??
+            [];
+      } else if (selectedtype.contains("Discounted")) {
+        return restaurant?.items
+                .where((item) => item.discount > 0.0)
+                .toList() ??
+            [];
+      } else if (selectedtype.contains("Most Expensive")) {
+        return restaurant?.items.where((item) => item.price >= 5.0).toList() ??
+            [];
+      } else {
+        return [];
+      }
+    }
+
     return Scaffold(
       body: SafeArea(
         child: Column(
           children: [
-            Padding(
-              padding:
-                  const EdgeInsets.symmetric(horizontal: 10, vertical: 12.5),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  const Icon(Icons.arrow_back_ios_new_outlined),
-                  Text(widget.selected ?? ''),
-                  const Spacer(),
-                  const Icon(Icons.search),
-                  GestureDetector(
-                    child: const Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 10),
-                      child: Icon(
-                        Icons.shopping_cart_checkout_outlined,
-                        size: 24,
-                      ),
-                    ),
-                  ),
-                ],
+  Padding(
+  padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 12.5),
+  child: Row(
+    children: [
+      Expanded(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            const Icon(Icons.arrow_back_ios_new_outlined),
+            Align(
+              alignment: Alignment.topCenter,
+              child: Text(
+                widget.selected ?? '',
+                style: const TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.w600,
+                ),
               ),
             ),
-            SingleChildScrollView(
+            const Icon(Icons.search),
+          ],
+        ),
+      ),
+      GestureDetector(
+        child: const Padding(
+          padding: EdgeInsets.symmetric(horizontal: 10),
+          child: Icon(
+            Icons.shopping_cart_checkout_outlined,
+            size: 24,
+          ),
+        ),
+      ),
+    ],
+  ),
+),
+
+SingleChildScrollView(
               scrollDirection: Axis.horizontal,
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
@@ -68,18 +104,19 @@ class _CategoryItemDetails extends State<CategoryItemDetails> {
                             padding: const EdgeInsets.symmetric(
                                 horizontal: 5.0, vertical: 1),
                             child: FilterChip(
-                                label: Text(type),
-                                selectedColor: const Color(0xFFF9B023),
-                                selected: selectedtype.contains(type),
-                                onSelected: (selected) {
-                                  setState(() {
-                                    if (selected) {
-                                      selectedtype.add(type);
-                                    } else {
-                                      selectedtype.remove(type);
-                                    }
-                                  });
-                                }),
+                              label: Text(type),
+                              selectedColor: const Color(0xFFF9B023),
+                              selected: selectedtype.contains(type),
+                              onSelected: (selected) {
+                                setState(() {
+                                  if (selected) {
+                                    selectedtype.add(type);
+                                  } else {
+                                    selectedtype.remove(type);
+                                  }
+                                });
+                              },
+                            ),
                           ))
                       .toList(),
                 ),
@@ -87,102 +124,94 @@ class _CategoryItemDetails extends State<CategoryItemDetails> {
             ),
             Expanded(
               flex: 2,
-              child: Center(
-                child: Padding(
-                  padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
-                  child: GridView.builder(
-                    physics: const BouncingScrollPhysics(),
-                    shrinkWrap: true,
-                    gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2,
-                      crossAxisSpacing: 8.0,
-                      mainAxisSpacing: 8.0,
-                      childAspectRatio: 1,
-                    ),
-                    itemCount: restaurant?.items.length ?? 0,
-                    itemBuilder: (context, itemIndex) {
-                      final item = restaurant?.items[itemIndex];
-                      if (item == null) return Container();
-                      return Container(
-                        margin: const EdgeInsets.all(5),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(12),
-                          color: AppColors.cardColor,
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.black.withOpacity(0.1),
-                              spreadRadius: 1,
-                              blurRadius: 3,
-                              offset: Offset(0, 1),
-                            ),
-                          ],
+              child: GridView.builder(
+                physics: const BouncingScrollPhysics(),
+                shrinkWrap: true,
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  crossAxisSpacing: 8.0,
+                  mainAxisSpacing: 8.0,
+                  childAspectRatio: 1,
+                ),
+                itemCount: filteredItems().length,
+                itemBuilder: (context, itemIndex) {
+                  final item = filteredItems()[itemIndex];
+                  return Container(
+                    margin: const EdgeInsets.all(5),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(12),
+                      color: AppColors.cardColor,
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.1),
+                          spreadRadius: 1,
+                          blurRadius: 3,
+                          offset: const Offset(0, 1),
                         ),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            SizedBox(
-                              height: 110,
-                              child: Stack(
-                                
-                                children: [
-                                  SizedBox(
-                                    height: 100,
-                                    width: 800,
-                                    child: SvgPicture.asset(
-                                      'Assets/App_images/Image Icon.svg',
+                      ],
+                    ),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        SizedBox(
+                          height: 110,
+                          child: Stack(
+                            children: [
+                              SizedBox(
+                                height: 100,
+                                width: 800,
+                                child: SvgPicture.asset(
+                                  'Assets/App_images/Image Icon.svg',
+                                ),
+                              ),
+                              Positioned(
+                                bottom: 0,
+                                right: 8,
+                                child: GestureDetector(
+                                  onTap: () {
+                                    setState(() {});
+                                  },
+                                  child: Container(
+                                    decoration: const BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      color: AppColors.lightBlue,
                                     ),
-                                  ),
-                                  Positioned(
-                                    bottom: 0,
-                                    right: 8,
-                                    child: GestureDetector(
-                                      onTap: () {
-                                        setState(() {});
-                                      },
-                                      child: Container(
-                                        decoration: const BoxDecoration(
-                                          shape: BoxShape.circle,
-                                          color: AppColors.lightBlue,
-                                        ),
-                                        child: const Padding(
-                                          padding: EdgeInsets.all(8.0),
-                                          child: Icon(
-                                            Icons.add,
-                                            color: Colors.white,
-                                          ),
-                                        ),
+                                    child: const Padding(
+                                      padding: EdgeInsets.all(8.0),
+                                      child: Icon(
+                                        Icons.add,
+                                        color: Colors.white,
                                       ),
                                     ),
                                   ),
-                                ],
+                                ),
                               ),
-                            ),
-                            const SizedBox(
-                              height: 8,
-                            ),
-                            Text(
-                              item.itemName,
-                              style: const TextStyle(
-                                fontSize: 17,
-                                fontWeight: FontWeight.w600,
-                                color: Colors.black,
-                              ),
-                            ),
-                            Text(
-                              '\$${item.price.toStringAsFixed(2)}',
-                              style: const TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.w600,
-                                color: Color.fromARGB(255, 126, 125, 125),
-                              ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
-                      );
-                    },
-                  ),
-                ),
+                        const SizedBox(
+                          height: 8,
+                        ),
+                        Text(
+                          item.itemName,
+                          style: const TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w600,
+                            color: Colors.black,
+                          ),
+                        ),
+                        Text(
+                          '\$${item.price.toStringAsFixed(2)}',
+                          style: const TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w600,
+                            color: Color.fromARGB(255, 126, 125, 125),
+                          ),
+                        ),
+                      ],
+                    ),
+                  );
+                },
               ),
             ),
           ],
