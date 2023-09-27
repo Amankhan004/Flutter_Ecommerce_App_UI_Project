@@ -1,4 +1,5 @@
 import 'package:ecommerce_app_complete_ui_project/Data/main_data/item_data.dart';
+import 'package:ecommerce_app_complete_ui_project/Screens/Detail_view/detail_view.dart';
 import 'package:ecommerce_app_complete_ui_project/utils/App_colors/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -115,7 +116,7 @@ class RecommendedTwo extends StatelessWidget {
                             
                               GestureDetector(
                                 onTap: () {
-                                  
+                                   Navigator.push(context, MaterialPageRoute(builder: (_)=> const DetailScreen()));
                                 },
                                 child: Container(
                                   decoration: BoxDecoration(

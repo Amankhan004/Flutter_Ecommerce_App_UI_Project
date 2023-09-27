@@ -1,4 +1,5 @@
 import 'package:ecommerce_app_complete_ui_project/Data/category_data/restaurants_data.dart';
+import 'package:ecommerce_app_complete_ui_project/Screens/Detail_view/detail_view.dart';
 import 'package:ecommerce_app_complete_ui_project/utils/App_colors/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -66,7 +67,7 @@ class _CategoryItemDetails extends State<CategoryItemDetails> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            const Icon(Icons.arrow_back_ios_new_outlined),
+            InkWell(onTap:()=>Navigator.pop(context) , child: const Icon(Icons.arrow_back_ios_new_outlined)),
             Align(
               alignment: Alignment.topCenter,
               child: Text(
@@ -169,6 +170,7 @@ SingleChildScrollView(
                                 right: 8,
                                 child: GestureDetector(
                                   onTap: () {
+                                   Navigator.push(context, MaterialPageRoute(builder: (_)=> const DetailScreen()));
                                     setState(() {});
                                   },
                                   child: Container(
