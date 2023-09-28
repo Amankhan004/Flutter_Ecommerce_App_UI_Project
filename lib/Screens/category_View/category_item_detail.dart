@@ -59,43 +59,46 @@ class _CategoryItemDetails extends State<CategoryItemDetails> {
       body: SafeArea(
         child: Column(
           children: [
-  Padding(
-  padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 12.5),
-  child: Row(
-    children: [
-      Expanded(
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            InkWell(onTap:()=>Navigator.pop(context) , child: const Icon(Icons.arrow_back_ios_new_outlined)),
-            Align(
-              alignment: Alignment.topCenter,
-              child: Text(
-                widget.selected ?? '',
-                style: const TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.w600,
-                ),
+            Padding(
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 10, vertical: 12.5),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        InkWell(
+                            onTap: () => Navigator.pop(context),
+                            child:
+                                const Icon(Icons.arrow_back_ios_new_outlined)),
+                        Align(
+                          alignment: Alignment.topCenter,
+                          child: Text(
+                            widget.selected ?? '',
+                            style: const TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                        ),
+                        const Icon(Icons.search),
+                      ],
+                    ),
+                  ),
+                  GestureDetector(
+                    child: const Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 10),
+                      child: Icon(
+                        Icons.shopping_cart_checkout_outlined,
+                        size: 24,
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ),
-            const Icon(Icons.search),
-          ],
-        ),
-      ),
-      GestureDetector(
-        child: const Padding(
-          padding: EdgeInsets.symmetric(horizontal: 10),
-          child: Icon(
-            Icons.shopping_cart_checkout_outlined,
-            size: 24,
-          ),
-        ),
-      ),
-    ],
-  ),
-),
-
-SingleChildScrollView(
+            SingleChildScrollView(
               scrollDirection: Axis.horizontal,
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
@@ -125,95 +128,101 @@ SingleChildScrollView(
             ),
             Expanded(
               flex: 2,
-              child: GridView.builder(
-                physics: const BouncingScrollPhysics(),
-                shrinkWrap: true,
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                  crossAxisSpacing: 8.0,
-                  mainAxisSpacing: 8.0,
+              child: Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: GridView.builder(
+                  physics: const BouncingScrollPhysics(),
+                  shrinkWrap: true,
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                   crossAxisSpacing: 14.0,
+                  mainAxisSpacing: 10.0,
                   childAspectRatio: 1,
-                ),
-                itemCount: filteredItems().length,
-                itemBuilder: (context, itemIndex) {
-                  final item = filteredItems()[itemIndex];
-                  return Container(
-                    margin: const EdgeInsets.all(5),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(12),
-                      color: AppColors.cardColor,
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.black.withOpacity(0.1),
-                          spreadRadius: 1,
-                          blurRadius: 3,
-                          offset: const Offset(0, 1),
-                        ),
-                      ],
-                    ),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        SizedBox(
-                          height: 110,
-                          child: Stack(
-                            children: [
-                              SizedBox(
-                                height: 100,
-                                width: 800,
-                                child: SvgPicture.asset(
-                                  'Assets/App_images/Image Icon.svg',
+                    
+                  ),
+                  itemCount: filteredItems().length,
+                  itemBuilder: (context, itemIndex) {
+                    final item = filteredItems()[itemIndex];
+                    return Container(
+                      margin: const EdgeInsets.all(5),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(12),
+                        color: AppColors.cardColor,
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black.withOpacity(0.1),
+                            spreadRadius: 1,
+                            blurRadius: 3,
+                            offset: const Offset(0, 1),
+                          ),
+                        ],
+                      ),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          SizedBox(
+                            height: 110,
+                            child: Stack(
+                              children: [
+                                SizedBox(
+                                  height: 100,
+                                  width: 700,
+                                  child: Image.asset(item.itemImage)
                                 ),
-                              ),
-                              Positioned(
-                                bottom: 0,
-                                right: 8,
-                                child: GestureDetector(
-                                  onTap: () {
-                                   Navigator.push(context, MaterialPageRoute(builder: (_)=> const DetailScreen()));
-                                    setState(() {});
-                                  },
-                                  child: Container(
-                                    decoration: const BoxDecoration(
-                                      shape: BoxShape.circle,
-                                      color: AppColors.lightBlue,
-                                    ),
-                                    child: const Padding(
-                                      padding: EdgeInsets.all(8.0),
-                                      child: Icon(
-                                        Icons.add,
-                                        color: Colors.white,
+                                Positioned(
+                                  bottom: 0,
+                                  right: 8,
+                                  child: GestureDetector(
+                                    onTap: () {
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (_) =>
+                                                  const DetailScreen()));
+                                      setState(() {});
+                                    },
+                                    child: Container(
+                                      decoration: const BoxDecoration(
+                                        shape: BoxShape.circle,
+                                        color: AppColors.lightBlue,
+                                      ),
+                                      child: const Padding(
+                                        padding: EdgeInsets.all(8.0),
+                                        child: Icon(
+                                          Icons.add,
+                                          color: Colors.white,
+                                        ),
                                       ),
                                     ),
                                   ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
-                        ),
-                        const SizedBox(
-                          height: 8,
-                        ),
-                        Text(
-                          item.itemName,
-                          style: const TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w600,
-                            color: Colors.black,
+                          const SizedBox(
+                            height: 8,
                           ),
-                        ),
-                        Text(
-                          '\$${item.price.toStringAsFixed(2)}',
-                          style: const TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w600,
-                            color: Color.fromARGB(255, 126, 125, 125),
+                          Text(
+                            item.itemName,
+                            style: const TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w600,
+                              color: Colors.black,
+                            ),
                           ),
-                        ),
-                      ],
-                    ),
-                  );
-                },
+                          Text(
+                            '\$${item.price.toStringAsFixed(2)}',
+                            style: const TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w600,
+                              color: Color.fromARGB(255, 126, 125, 125),
+                            ),
+                          ),
+                        ],
+                      ),
+                    );
+                  },
+                ),
               ),
             ),
           ],

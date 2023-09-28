@@ -57,8 +57,8 @@ class _ProductDescriptionState extends State<ProductDescription> {
                 width: 64,
                 padding: const EdgeInsets.all(15),
                 decoration: BoxDecoration(
-                  color: isFavorited ? Colors.red : Color.fromARGB(255, 252, 212, 212),
-                  borderRadius: BorderRadius.only(
+                  color: isFavorited ? Colors.red :const Color.fromARGB(255, 252, 212, 212),
+                  borderRadius:const BorderRadius.only(
                     topLeft: Radius.circular(20),
                     bottomLeft: Radius.circular(20),
                   ),

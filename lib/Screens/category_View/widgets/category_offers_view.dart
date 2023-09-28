@@ -1,7 +1,6 @@
 import 'package:ecommerce_app_complete_ui_project/Data/category_data/restaurants_data.dart';
 import 'package:ecommerce_app_complete_ui_project/Screens/category_View/category_item_detail.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 class CategoryOffers extends StatelessWidget {
   const CategoryOffers({Key? key});
@@ -57,11 +56,9 @@ class CategoryOffers extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         SizedBox(
-                          height: 100,
-                          width: 100,
-                          child: SvgPicture.asset(
-                            "Assets/App_images/Image Icon.svg",
-                          ),
+                          height: 120,
+                          width: 160,
+                          child: Image.asset(restaurant.restaurantImage)
                         ),
                         const SizedBox(
                           height: 8,

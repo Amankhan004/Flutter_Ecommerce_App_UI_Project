@@ -14,7 +14,7 @@ class RecommendedTwo extends StatelessWidget {
       children: [
         Container(
           margin: const EdgeInsets.only(top: 10),
-          height: 250,
+          height: 260,
           child: ListView.builder(
             physics: const BouncingScrollPhysics(),
             shrinkWrap: true,
@@ -37,11 +37,14 @@ class RecommendedTwo extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    SizedBox(
-                      height: 120,
-                      width: 160,
-                      child: Image.asset(
-                        item.imageAsset,
+                    Padding(
+                      padding: const EdgeInsets.only(top: 10),
+                      child: SizedBox(
+                        height: 120,
+                        width: 160,
+                        child: Image.asset(
+                          item.imageAsset,
+                        ),
                       ),
                     ),
                     Column(

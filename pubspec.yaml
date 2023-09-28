@@ -71,6 +71,15 @@ flutter:
     - Assets/App_Icons/
     - Assets/App_images/main_images/
     - Assets/App_images/discription_detail_images/rating/
+    - Assets/App_images/Restaurants/
+    - Assets/App_images/Restaurants/fashionemporium/
+    - Assets/App_images/Restaurants/freshbakesbakery/
+    - Assets/App_images/Restaurants/greengrocers/
+    - Assets/App_images/Restaurants/imtiazsupermarket/
+    - Assets/App_images/Restaurants/KFC/
+    - Assets/App_images/Restaurants/Mcdonalds/
+    - Assets/App_images/Restaurants/meatmaster/
+    - Assets/App_images/Restaurants/oceanfishmarket/
   
 
   # An image asset can refer to one or more resolution-specific "variants", see
