@@ -1,5 +1,6 @@
 import 'package:ecommerce_app_complete_ui_project/Screens/Home_View/widgets/drop_down.dart';
 import 'package:ecommerce_app_complete_ui_project/Screens/Home_View/widgets/offers_container.dart';
+import 'package:ecommerce_app_complete_ui_project/Screens/Home_View/widgets/offers_container_two.dart';
 import 'package:ecommerce_app_complete_ui_project/Screens/Home_View/widgets/recommended_view.dart';
 import 'package:ecommerce_app_complete_ui_project/Screens/Home_View/widgets/recommended_view_02.dart';
 import 'package:ecommerce_app_complete_ui_project/Screens/Home_View/widgets/search_bar.dart';
@@ -74,6 +75,12 @@ class _HomeViewState extends State<HomeView> {
                   ),
                 ),
                 const Recommended(),
+
+
+
+               const OffersContainersTwo(),
+              const SizedBox( height: 8),
+
                 Padding(
                   padding: const EdgeInsets.only(right: 120),
                   child: Text(

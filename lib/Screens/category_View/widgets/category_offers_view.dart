@@ -38,6 +38,7 @@ class CategoryOffers extends StatelessWidget {
                         builder: (context) => CategoryItemDetails(
                           selected: restaurant.restaurantName,
                           selectedCategory: restaurant,
+                          restIndex: index,
                         ),
                       ),
                     );
@@ -56,10 +57,9 @@ class CategoryOffers extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         SizedBox(
-                          height: 120,
-                          width: 160,
-                          child: Image.asset(restaurant.restaurantImage)
-                        ),
+                            height: 120,
+                            width: 160,
+                            child: Image.asset(restaurant.restaurantImage)),
                         const SizedBox(
                           height: 8,
                         ),

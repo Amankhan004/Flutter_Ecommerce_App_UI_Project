@@ -7,18 +7,17 @@ class AddToCartButton extends StatelessWidget {
     Key? key,
     required this.buttonText,
     required int itemCount,
-     required this.buttonColor,
+     required this.buttonColor,  required this.onPressed,
   }) : super(key: key);
 
   final String buttonText;
   final Color buttonColor;
+  final VoidCallback onPressed;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {
-        // Navigator.push(context, MaterialPageRoute(builder: (_) => const MainMenuView()));
-      },
+      onTap: onPressed,
       child: Container(
         decoration: BoxDecoration(
           color: buttonColor,

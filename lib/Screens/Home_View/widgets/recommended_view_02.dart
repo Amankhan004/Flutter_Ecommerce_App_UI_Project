@@ -119,7 +119,7 @@ class RecommendedTwo extends StatelessWidget {
                             
                               GestureDetector(
                                 onTap: () {
-                                   Navigator.push(context, MaterialPageRoute(builder: (_)=> const DetailScreen()));
+                                   Navigator.push(context, MaterialPageRoute(builder: (_)=> DetailScreen(index: index,restIndex: 0,)));
                                 },
                                 child: Container(
                                   decoration: BoxDecoration(

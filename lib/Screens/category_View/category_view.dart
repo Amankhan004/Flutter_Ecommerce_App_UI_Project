@@ -1,4 +1,4 @@
-import 'package:ecommerce_app_complete_ui_project/Screens/category_View/widgets/category_offers_view.dart';
+ import 'package:ecommerce_app_complete_ui_project/Screens/category_View/widgets/category_offers_view.dart';
 import 'package:ecommerce_app_complete_ui_project/resources/app_Icons.dart';
 import 'package:ecommerce_app_complete_ui_project/utils/App_colors/colors.dart';
 import 'package:flutter/material.dart';

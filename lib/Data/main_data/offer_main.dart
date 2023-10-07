@@ -49,3 +49,23 @@ List<CardData> cardDataList = [
     backgroundColor: AppColors.lightGrey,
   ),
 ];
+
+List<CardData> cardDataListTwo = [
+ 
+  CardData(
+    title: "346 USD",
+    discount: null, 
+    description: "your total savings",
+    cardWidth: 180,
+    cardHeight: 120,
+    backgroundColor: AppColors.lightYellow,
+  ),
+  CardData(
+    title: "215 HRS",
+    discount: null,
+    description: "your total time saved",
+    cardWidth: 180,
+    cardHeight: 120,
+    backgroundColor: AppColors.lightGrey,
+  ),
+];

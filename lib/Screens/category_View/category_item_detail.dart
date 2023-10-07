@@ -2,23 +2,30 @@ import 'package:ecommerce_app_complete_ui_project/Data/category_data/restaurants
 import 'package:ecommerce_app_complete_ui_project/Screens/Detail_view/detail_view.dart';
 import 'package:ecommerce_app_complete_ui_project/utils/App_colors/colors.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 
 class CategoryItemDetails extends StatefulWidget {
   const CategoryItemDetails({
-    Key? key,
+    super.key,
     this.selected,
     this.selectedCategory,
+    required this.restIndex,
   });
 
   final String? selected;
   final RestaurantData? selectedCategory;
+  final int restIndex;
 
   @override
-  State<CategoryItemDetails> createState() => _CategoryItemDetails();
+  State<CategoryItemDetails> createState() =>
+      // ignore: no_logic_in_create_state
+      _CategoryItemDetails(restIndex: restIndex);
 }
 
 class _CategoryItemDetails extends State<CategoryItemDetails> {
+  final int restIndex;
+  _CategoryItemDetails({required this.restIndex});
+
+  // Create a list to store favorite items
   static final List<String> typeof = [
     "All",
     "Popular",
@@ -135,10 +142,9 @@ class _CategoryItemDetails extends State<CategoryItemDetails> {
                   shrinkWrap: true,
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2,
-                   crossAxisSpacing: 14.0,
-                  mainAxisSpacing: 10.0,
-                  childAspectRatio: 1,
-                    
+                    crossAxisSpacing: 14.0,
+                    mainAxisSpacing: 10.0,
+                    childAspectRatio: 1,
                   ),
                   itemCount: filteredItems().length,
                   itemBuilder: (context, itemIndex) {
@@ -165,10 +171,9 @@ class _CategoryItemDetails extends State<CategoryItemDetails> {
                             child: Stack(
                               children: [
                                 SizedBox(
-                                  height: 100,
-                                  width: 700,
-                                  child: Image.asset(item.itemImage)
-                                ),
+                                    height: 100,
+                                    width: 700,
+                                    child: Image.asset(item.itemImage)),
                                 Positioned(
                                   bottom: 0,
                                   right: 8,
@@ -177,8 +182,10 @@ class _CategoryItemDetails extends State<CategoryItemDetails> {
                                       Navigator.push(
                                           context,
                                           MaterialPageRoute(
-                                              builder: (_) =>
-                                                  const DetailScreen()));
+                                              builder: (_) => DetailScreen(
+                                                    index: itemIndex,
+                                                    restIndex: restIndex,
+                                                  )));
                                       setState(() {});
                                     },
                                     child: Container(
@@ -218,6 +225,7 @@ class _CategoryItemDetails extends State<CategoryItemDetails> {
                               color: Color.fromARGB(255, 126, 125, 125),
                             ),
                           ),
+                          
                         ],
                       ),
                     );

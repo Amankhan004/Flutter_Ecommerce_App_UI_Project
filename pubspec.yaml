@@ -41,6 +41,7 @@ dependencies:
   flutter_svg: ^2.0.7
   animated_notch_bottom_bar: ^1.0.0
   google_nav_bar: ^5.0.6
+  firebase_core: ^2.17.0
 
 dev_dependencies:
   flutter_test:
@@ -71,6 +72,7 @@ flutter:
     - Assets/App_Icons/
     - Assets/App_images/main_images/
     - Assets/App_images/discription_detail_images/rating/
+    - Assets/App_images/home_images/
     - Assets/App_images/Restaurants/
     - Assets/App_images/Restaurants/fashionemporium/
     - Assets/App_images/Restaurants/freshbakesbakery/
@@ -80,6 +82,90 @@ flutter:
     - Assets/App_images/Restaurants/Mcdonalds/
     - Assets/App_images/Restaurants/meatmaster/
     - Assets/App_images/Restaurants/oceanfishmarket/
+    - Assets/App_images/Restaurants/KFC/Original Recipe Chicken/
+    - Assets/App_images/Restaurants/KFC/Chicken Popcorn/
+    - Assets/App_images/Restaurants/KFC/Chicken Tenders/
+    - Assets/App_images/Restaurants/KFC/Coleslaw/
+    - Assets/App_images/Restaurants/KFC/Famous Bowl/
+    - Assets/App_images/Restaurants/KFC/Iced Tea/
+    - Assets/App_images/Restaurants/KFC/Mashed Potatoes/
+    - Assets/App_images/Restaurants/KFC/Original Recipe Chicken/
+    - Assets/App_images/Restaurants/KFC/Spicy Chicken Sandwich/
+    - Assets/App_images/Restaurants/KFC/Twister Wrap/
+    - Assets/App_images/Restaurants/KFC/Zinger Burger/
+    - Assets/App_images/Restaurants/Mcdonalds/Apple Pie/
+    - Assets/App_images/Restaurants/Mcdonalds/Big Mac/
+    - Assets/App_images/Restaurants/Mcdonalds/Chicken McNuggets/
+    - Assets/App_images/Restaurants/Mcdonalds/Filet-O-Fish/
+    - Assets/App_images/Restaurants/Mcdonalds/French Fries/
+    - Assets/App_images/Restaurants/Mcdonalds/Hot Caramel Sundae/
+    - Assets/App_images/Restaurants/Mcdonalds/Iced Coffee/
+    - Assets/App_images/Restaurants/Mcdonalds/McDouble/
+    - Assets/App_images/Restaurants/Mcdonalds/Mocha Frappé/
+    - Assets/App_images/Restaurants/Mcdonalds/Quarter Pounder with Cheese/
+    - Assets/App_images/Restaurants/oceanfishmarket/Clams/
+    - Assets/App_images/Restaurants/oceanfishmarket/Cod/
+    - Assets/App_images/Restaurants/oceanfishmarket/Crab/
+    - Assets/App_images/Restaurants/oceanfishmarket/Fresh Salmon/
+    - Assets/App_images/Restaurants/oceanfishmarket/Lobster/
+    - Assets/App_images/Restaurants/oceanfishmarket/Oysters/
+    - Assets/App_images/Restaurants/oceanfishmarket/Palette/
+    - Assets/App_images/Restaurants/oceanfishmarket/Shrimp/
+    - Assets/App_images/Restaurants/oceanfishmarket/Squid/
+    - Assets/App_images/Restaurants/oceanfishmarket/Tilapia/
+    - Assets/App_images/Restaurants/meatmaster/Chicken Meat/
+    - Assets/App_images/Restaurants/meatmaster/Fish Meat/
+    - Assets/App_images/Restaurants/meatmaster/Fresh Lamb Chops/
+    - Assets/App_images/Restaurants/meatmaster/Ground Turkey/
+    - Assets/App_images/Restaurants/meatmaster/Marinated Ribs/
+    - Assets/App_images/Restaurants/meatmaster/Premium Beef Steak/
+    - Assets/App_images/Restaurants/meatmaster/Salami/
+    - Assets/App_images/Restaurants/meatmaster/Sausages/
+    - Assets/App_images/Restaurants/meatmaster/Tender Chicken Breast/
+    - Assets/App_images/Restaurants/meatmaster/Turkey Drumsticks/
+    - Assets/App_images/Restaurants/fashionemporium/Casual Wear/
+    - Assets/App_images/Restaurants/fashionemporium/Designer Handbags/
+    - Assets/App_images/Restaurants/fashionemporium/Designer Jeans/
+    - Assets/App_images/Restaurants/fashionemporium/Fashion Jewelry/
+    - Assets/App_images/Restaurants/fashionemporium/Fashionable Dresses/
+    - Assets/App_images/Restaurants/fashionemporium/Formal Suits/
+    - Assets/App_images/Restaurants/fashionemporium/Stylish Accessories/
+    - Assets/App_images/Restaurants/fashionemporium/Sunglasses/
+    - Assets/App_images/Restaurants/fashionemporium/Trendy Footwear/
+    - Assets/App_images/Restaurants/fashionemporium/Wrist Watches/
+    - Assets/App_images/Restaurants/freshbakesbakery/Artisanal Cakes/
+    - Assets/App_images/Restaurants/freshbakesbakery/Bread Rolls/
+    - Assets/App_images/Restaurants/freshbakesbakery/Chocolate Chip Cookies/
+    - Assets/App_images/Restaurants/freshbakesbakery/Croissants/
+    - Assets/App_images/Restaurants/freshbakesbakery/Cupcakes/
+    - Assets/App_images/Restaurants/freshbakesbakery/Delicious Pastries/
+    - Assets/App_images/Restaurants/freshbakesbakery/Fresh Bread Loaves/
+    - Assets/App_images/Restaurants/freshbakesbakery/Fresh Donuts/
+    - Assets/App_images/Restaurants/freshbakesbakery/Muffins/
+    - Assets/App_images/Restaurants/freshbakesbakery/Pies and Tarts/
+    - Assets/App_images/Restaurants/greengrocers/Dried Fruits/
+    - Assets/App_images/Restaurants/greengrocers/Exotic Fruits/
+    - Assets/App_images/Restaurants/greengrocers/Fresh Fruits/
+    - Assets/App_images/Restaurants/greengrocers/Fresh Juices/
+    - Assets/App_images/Restaurants/greengrocers/Herbs and Spices/
+    - Assets/App_images/Restaurants/greengrocers/Leafy Greens/
+    - Assets/App_images/Restaurants/greengrocers/Organic Seeds/
+    - Assets/App_images/Restaurants/greengrocers/Organic Vegetables/
+    - Assets/App_images/Restaurants/greengrocers/Root Vegetables/
+    - Assets/App_images/Restaurants/greengrocers/Vegetable Oils/
+    - Assets/App_images/Restaurants/imtiazsupermarket/Beverages/
+    - Assets/App_images/Restaurants/imtiazsupermarket/Bread Loaf/
+    - Assets/App_images/Restaurants/imtiazsupermarket/Cereals/
+    - Assets/App_images/Restaurants/imtiazsupermarket/Cleaning Supplies/
+    - Assets/App_images/Restaurants/imtiazsupermarket/Fresh Eggs/
+    - Assets/App_images/Restaurants/imtiazsupermarket/Fresh Fruits/
+    - Assets/App_images/Restaurants/imtiazsupermarket/Milk and Dairy/
+    - Assets/App_images/Restaurants/imtiazsupermarket/Organic Vegetables/
+    - Assets/App_images/Restaurants/imtiazsupermarket/Pasta/
+    - Assets/App_images/Restaurants/imtiazsupermarket/Snacks/
+    - Assets/App_images/addtocardimages/
+    - Assets/App_images/signupimages/
+
   
 
   # An image asset can refer to one or more resolution-specific "variants", see
@@ -93,13 +179,12 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
-  #       - asset: fonts/Schyler-Italic.ttf
-  #         style: italic
-  #   - family: Trajan Pro
+  fonts:
+    - family: Metropolis
+      fonts:
+        - asset: Assets\App_fonts\metropolis.regular.otf
+          style: italic
+    - family: Trajan Pro
   #     fonts:
   #       - asset: fonts/TrajanPro.ttf
   #       - asset: fonts/TrajanPro_Bold.ttf

@@ -1,12 +1,21 @@
+import 'package:ecommerce_app_complete_ui_project/Data/category_data/restaurants_data.dart';
 import 'package:ecommerce_app_complete_ui_project/Screens/Detail_view/widgets/add_to_cart_button.dart';
 import 'package:flutter/material.dart';
 import 'package:ecommerce_app_complete_ui_project/utils/App_colors/colors.dart';
 
 class CustomColorBar extends StatefulWidget {
-  final Function(Color) onColorChanged; 
+  final Function(Color) onColorChanged;
+  final Function(ItemData) onAddToCart;
+  final Function(ItemData) removeFromCart;
+  final ItemData itemData; // Add this
 
-  const CustomColorBar({Key? key, required this.onColorChanged}) : super(key: key);
-
+  const CustomColorBar({
+    Key? key,
+    required this.onColorChanged,
+    required this.onAddToCart,
+    required this.removeFromCart,
+    required this.itemData, // Add this
+  }) : super(key: key);
   @override
   State<CustomColorBar> createState() => _CustomColorBarState();
 }
@@ -34,7 +43,7 @@ class _CustomColorBarState extends State<CustomColorBar> {
     setState(() {
       selectedColor = color;
     });
-    widget.onColorChanged(selectedColor); 
+    widget.onColorChanged(selectedColor);
   }
 
   @override
@@ -74,7 +83,7 @@ class _CustomColorBarState extends State<CustomColorBar> {
                                   Colors.red,
                                   Colors.green,
                                   AppColors.lightBlue,
-                           Colors.orange,
+                                  Colors.orange,
                                 ][index],
                                 border: Border.all(
                                   color: selectedColorIndex == index
@@ -88,7 +97,7 @@ class _CustomColorBarState extends State<CustomColorBar> {
                       ],
                     ),
                   ),
-                const  Spacer(),
+                  const Spacer(),
                   Container(
                     decoration: BoxDecoration(
                       color: Colors.white,
@@ -103,7 +112,7 @@ class _CustomColorBarState extends State<CustomColorBar> {
                       child: const Icon(Icons.remove),
                     ),
                   ),
-                const  SizedBox(width: 8),
+                  const SizedBox(width: 8),
                   Container(
                     decoration: BoxDecoration(
                       color: Colors.white,
@@ -113,17 +122,18 @@ class _CustomColorBarState extends State<CustomColorBar> {
                     width: 48,
                     child: InkWell(
                       onTap: () {
-                        incrementItem();
+                        // incrementItem();
                       },
                       child: Center(
                         child: Text(
                           itemCount.toString(),
-                          style:const TextStyle(fontSize: 20, color: Colors.black),
+                          style: const TextStyle(
+                              fontSize: 20, color: Colors.black),
                         ),
                       ),
                     ),
                   ),
-                const  SizedBox(width: 8),
+                  const SizedBox(width: 8),
                   Container(
                     decoration: BoxDecoration(
                       color: Colors.white,
@@ -138,7 +148,7 @@ class _CustomColorBarState extends State<CustomColorBar> {
                       child: const Icon(Icons.add),
                     ),
                   ),
-                const  SizedBox(width: 15),
+                  const SizedBox(width: 15),
                 ],
               ),
             ],
@@ -147,7 +157,7 @@ class _CustomColorBarState extends State<CustomColorBar> {
         Container(
           padding: const EdgeInsets.fromLTRB(0, 40, 0, 36),
           width: double.infinity,
-          decoration:const BoxDecoration(
+          decoration: const BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.only(
               topLeft: Radius.circular(40),
@@ -156,7 +166,14 @@ class _CustomColorBarState extends State<CustomColorBar> {
           ),
           child: Column(
             children: [
-              AddToCartButton(buttonText: 'Add To Cart', itemCount: itemCount, buttonColor: selectedColor),
+              AddToCartButton(
+                buttonText: 'Add to Cart',
+                buttonColor: selectedColor,
+                onPressed: () {
+                  widget.onAddToCart(widget.itemData);
+                },
+                itemCount: itemCount,
+              )
             ],
           ),
         ),

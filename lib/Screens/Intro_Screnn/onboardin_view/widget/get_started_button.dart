@@ -9,7 +9,7 @@ class GetStartedButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return  GestureDetector(
       onTap: () {
-        Navigator.push(context, MaterialPageRoute(builder: (_)=> const MainMenuView()));
+        Navigator.push(context, MaterialPageRoute(builder: (_)=>  MainMenuView()));
       },
       child: Container(
          decoration: BoxDecoration(
