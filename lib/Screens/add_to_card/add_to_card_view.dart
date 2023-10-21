@@ -1,6 +1,8 @@
 import 'package:ecommerce_app_complete_ui_project/Screens/add_to_card/widgets/add_to_cart_items.dart';
 import 'package:ecommerce_app_complete_ui_project/Screens/add_to_card/widgets/att_to_card.dart';
 import 'package:ecommerce_app_complete_ui_project/Screens/add_to_card/widgets/custom_calculation.dart';
+import 'package:ecommerce_app_complete_ui_project/Screens/bottom_navbar/bottom_navbar.dart';
+import 'package:ecommerce_app_complete_ui_project/Screens/category_View/category_view.dart';
 import 'package:ecommerce_app_complete_ui_project/Screens/checkout_view/checkout_view.dart';
 import 'package:ecommerce_app_complete_ui_project/Widgets/custom_button.dart';
 import 'package:flutter/material.dart';
@@ -48,7 +50,11 @@ class _AddToCartViewState extends State<AddToCartView> {
                               width: 48,
                               child: InkWell(
                                   onTap: () {
-                                    Navigator.pop(context);
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                MainMenuView()));
                                   },
                                   child: const Icon(
                                       Icons.arrow_back_ios_new_outlined))),
@@ -56,7 +62,6 @@ class _AddToCartViewState extends State<AddToCartView> {
                             width: 10,
                           ),
                           const SizedBox(
-                            
                             width: 150,
                             child: Padding(
                               padding: EdgeInsets.only(top: 10),
@@ -164,77 +169,17 @@ class _AddToCartViewState extends State<AddToCartView> {
               ],
             ),
           ),
-          AddToCartItems(items: cartItems,),
-          // Expanded(
-          //   child: isNew
-          //       ? const Column(
-          //           mainAxisAlignment: MainAxisAlignment.start,
-          //           children: [
-          //             // LottieBuilder.asset(
-          //             //   // "assets/empty.json",
-
-          //             //   // height: 250,
-          //             //   // reverse: true,
-          //             //   // repeat: true,
-          //             //   // fit: BoxFit.cover,
-          //             // ),
-          //             // Center(
-          //             //     child: Text(
-          //             //   // "Your Cart is Empty :(",
-          //             // //   style: GoogleFonts.manrope(
-          //             // //       fontWeight: FontWeight.bold, fontSize: 16),
-          //             // // )),
-          //           ],
-          //         )
-          //       : ListView.builder(
-          //           itemCount: widget.products?.length,
-          //           itemBuilder: (context, index) {
-          //             return ListTile(
-          //               tileColor: Colors.transparent,
-          //               title: Text(
-          //                 widget.products?[index].name,
-          //                 style:
-          //                     GoogleFonts.manrope(fontWeight: FontWeight.w800),
-          //               ),
-          //               subtitle: Text("\$${widget.products?[index].price}"),
-          //               // trailing: Text("Quantity: ${item.quantity}"),
-          //               trailing: Row(
-          //                 mainAxisSize: MainAxisSize.min,
-          //                 mainAxisAlignment: MainAxisAlignment.end,
-          //                 children: [
-          //                   Text(
-          //                       "${widget.products?[index].quantity.toString()}x"),
-          //                   IconButton(
-          //                     icon: const Icon(Icons.remove),
-          //                     onPressed: () {
-          //                       // print(widget.products?.map((hi) => hi.name));
-          //                       setState(() {
-          //                         if (widget.products?[index].quantity !=
-          //                             null) {
-          //                           if (widget.products?[index].quantity > 0) {
-          //                             widget.products?[index].quantity--;
-          //                           }
-          //                           // ignore: unrelated_type_equality_checks
-          //                           if (widget.products?[index].quantity == 0) {
-          //                             widget.products?.removeAt(index);
-          //                           }
-          //                         }
-          //                       });
-          //                     },
-          //                   ),
-          //                 ],
-          //               ),
-          //             );
-          //           },
-          //         ),
-          // ),
+          AddToCartItems(
+            items: cartItems,
+          ),
+        
           CustomCalculation(),
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: InkWell(
               onTap: () {
-                Navigator.push(
-          context, MaterialPageRoute(builder: (context) => CheckoutScreen()));
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => CheckoutScreen()));
               },
               child: const CustomButton(
                 color: Color(0xFF2A4BA0),

@@ -4,6 +4,7 @@ import 'package:ecommerce_app_complete_ui_project/utils/App_colors/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 class Recommended extends StatelessWidget {
+  
   const Recommended({super.key});
 
   @override

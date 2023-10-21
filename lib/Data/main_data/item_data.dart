@@ -14,169 +14,91 @@ class ItemData {
 
 List<ItemData> itemsList = [
   ItemData(
-    itemName: "Carrots",
-    tagline: "Crunchy Orange",
+    itemName: "Original Recipe Chicken",
+    tagline: "Delicious Fried Chicken",
     price: 2.49,
-    imageAsset: "Assets/App_images/main_images/carrots.png",
+    imageAsset:
+        "Assets/App_images/Restaurants/KFC/th-removebg-preview - Copy.png",
   ),
   ItemData(
-    itemName: "Chicken",
-    tagline: "Tender Delight",
+    itemName: "Chicken Tenders",
+    tagline: "Tender and Crispy",
     price: 5.99,
-    imageAsset: "Assets/App_images/main_images/chicken.png",
+    imageAsset: "Assets/App_images/Restaurants/KFC/th-removebg-preview (1).png",
   ),
   ItemData(
-    itemName: "Tomatoes",
-    tagline: "Juicy Reds",
+    itemName: "Spicy Chicken Sandwich",
+    tagline: "Spice Up Your Meal",
     price: 1.99,
-    imageAsset: "Assets/App_images/main_images/tomatoes.png",
+    imageAsset: "Assets/App_images/Restaurants/KFC/th-removebg-preview (2).png",
   ),
   ItemData(
-    itemName: "Beef",
-    tagline: "Meat Lover's",
+    itemName: "Mashed Potatoes",
+    tagline: "Creamy Mashed Potatoes",
     price: 8.99,
-    imageAsset: "Assets/App_images/main_images/beef.png",
+    imageAsset: "Assets/App_images/Restaurants/KFC/th-removebg-preview (3).png",
   ),
-
   ItemData(
-    itemName: "Ice Cream",
-    tagline: "Creamy Joy",
+    itemName: "Coleslaw",
+    tagline: "Refreshing Coleslaw",
+    price: 2.99,
+    imageAsset: "Assets/App_images/Restaurants/KFC/th-removebg-preview (4).png",
+  ),
+  ItemData(
+    itemName: "Famous Bowl",
+    tagline: "Satisfying Famous Bowl",
     price: 4.49,
-    imageAsset: "Assets/App_images/main_images/icecream.png",
+    imageAsset: "Assets/App_images/Restaurants/KFC/th-removebg-preview (5).png",
   ),
-  ItemData(
-    itemName: "Milk",
-    tagline: "Dairy Fresh",
-    price: 2.99,
-    imageAsset: "Assets/App_images/main_images/milk.png",
-  ),
-  ItemData(
-    itemName: "Salmon",
-    tagline: "Ocean Catch",
-    price: 9.99,
-    imageAsset: "Assets/App_images/main_images/salmon.png",
-  ),
- 
-  ItemData(
-    itemName: "Broccoli",
-    tagline: "Nutri-Florets",
-    price: 1.79,
-    imageAsset: "Assets/App_images/main_images/broocli.png",
-  ),
-  ItemData(
-    itemName: "Cucumbers",
-    tagline: "Cool Crunch",
-    price: 1.69,
-    imageAsset: "Assets/App_images/main_images/cucumbar.png",
-  ),
-  ItemData(
-    itemName: "Eggs",
-    tagline: "Farm Fresh",
-    price: 3.29,
-    imageAsset: "Assets/App_images/main_images/eggs.png",
-  ),
-  ItemData(
-    itemName: "Pineapple",
-    tagline: "Tropical Treat",
-    price: 2.99,
-    imageAsset: "Assets/App_images/main_images/pinapple.png",
-  ),
-  ItemData(
-    itemName: "Bell Peppers",
-    tagline: "Vibrant Bells",
-    price: 2.29,
-    imageAsset: "Assets/App_images/main_images/bellpapers.png",
-  ),
-  ItemData(
-    itemName: "Apples",
-    tagline: "Crisp Reds",
-    price: 1.49,
-    imageAsset: "Assets/App_images/main_images/apples.png",
-  ),
-  ItemData(
-    itemName: "Oranges",
-    tagline: "Citrus Burst",
-    price: 1.99,
-    imageAsset: "Assets/App_images/main_images/oranges.png",
-  ),
-  ItemData(
-    itemName: "Lettuce",
-    tagline: "Leafy Green",
-    price: 1.29,
-    imageAsset: "Assets/App_images/main_images/lettuce.png",
-  ),
-  ItemData(
-    itemName: "Potatoes",
-    tagline: "Versatile Spuds",
-    price: 2.79,
-    imageAsset: "Assets/App_images/main_images/potatoes.png",
-  ),
-
- 
 ];
-
-
-
 
 List<ItemData> itemList2 = [
   ItemData(
-    itemName: "Potatoes",
-    tagline: "Versatile Spuds",
+    itemName: "Big Mac",
+    tagline: "The Iconic Big Mac",
     price: 2.79,
-    imageAsset: "Assets/App_images/main_images/potatoes.png",
+    imageAsset:
+        "Assets/App_images/Restaurants/Mcdonalds/th-removebg-preview.png",
   ),
   ItemData(
-    itemName: "Apples",
-    tagline: "Crisp Reds",
+    itemName: "Chicken McNuggets",
+    tagline: "Irresistible Chicken McNuggets",
     price: 1.49,
-    imageAsset: "Assets/App_images/main_images/apples.png",
+    imageAsset:
+        "Assets/App_images/Restaurants/Mcdonalds/th-removebg-preview (1).png",
   ),
-
   ItemData(
-    itemName: "Lettuce",
-    tagline: "Leafy Green",
+    itemName: "Quarter Pounder",
+    tagline: "Quarter Pounder Bliss",
     price: 1.29,
-    imageAsset: "Assets/App_images/main_images/lettuce.png",
+    imageAsset:
+        "Assets/App_images/Restaurants/Mcdonalds/th-removebg-preview (2).png",
   ),
- 
   ItemData(
-    itemName: "Grapes",
-    tagline: "Sweet Gems",
+    itemName: "McDouble",
+    tagline: "McDouble Delight",
     price: 3.49,
-    imageAsset: "Assets/App_images/main_images/grapes.png",
+    imageAsset:
+        "Assets/App_images/Restaurants/Mcdonalds/th-removebg-preview (4).png",
   ),
   ItemData(
-    itemName: "Cabbage",
+    itemName: "Filet-O-Fish",
     tagline: "Fresh and Crispy",
     price: 1.99,
     imageAsset: "Assets/App_images/main_images/gabbage.png",
   ),
   ItemData(
-    itemName: "Watermelon",
-    tagline: "Summer Delight",
+    itemName: "French Fries",
+    tagline: "Golden French Fries",
     price: 3.99,
-    imageAsset: "Assets/App_images/main_images/watermelon.png",
+    imageAsset:
+        "Assets/App_images/Restaurants/Mcdonalds/th-removebg-preview (5).png",
   ),
-
-
   ItemData(
-    itemName: "Steak",
-    tagline: "Grill Master's Choice",
+    itemName: "Apple Pie",
+    tagline: "Warm Apple Pie",
     price: 12.99,
-    imageAsset: "Assets/App_images/main_images/steak.png",
+    imageAsset:
+        "Assets/App_images/Restaurants/Mcdonalds/th-removebg-preview (6).png",
   ),
-  ItemData(
-    itemName: "Shrimp",
-    tagline: "Seafood Delight",
-    price: 9.99,
-    imageAsset: "Assets/App_images/main_images/shrimps.png",
-  ),
-  ItemData(
-    itemName: "Ice Cream",
-    tagline: "Sweet Treat",
-    price: 4.99,
-    imageAsset: "Assets/App_images/main_images/icecream.png",
-  ),
-  
 ];
-

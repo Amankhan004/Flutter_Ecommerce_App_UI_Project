@@ -6,10 +6,13 @@ import 'package:ecommerce_app_complete_ui_project/Screens/Home_View/widgets/reco
 import 'package:ecommerce_app_complete_ui_project/Screens/Home_View/widgets/search_bar.dart';
 import 'package:ecommerce_app_complete_ui_project/resources/app_Icons.dart';
 import 'package:ecommerce_app_complete_ui_project/utils/App_colors/colors.dart';
+import 'package:ecommerce_app_complete_ui_project/utils/services/firebase_auth.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({Key? key}) : super(key: key);
@@ -19,9 +22,8 @@ class HomeView extends StatefulWidget {
 }
 
 class _HomeViewState extends State<HomeView> {
- 
+  // Future<String> userNameFuture = getUserNameFromFirestore();
 
- 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -32,7 +34,7 @@ class _HomeViewState extends State<HomeView> {
             child: Column(
               children: [
                 Container(
-                  height: 252,
+                  height: 262,
                   color: AppColors.lightBlue,
                   child: Padding(
                     padding: const EdgeInsets.fromLTRB(20, 30, 15, 10),
@@ -41,15 +43,76 @@ class _HomeViewState extends State<HomeView> {
                       children: [
                         Row(
                           children: [
-                            Text("Hey, Aman",
-                                style: GoogleFonts.manrope(
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Row(
+                                  children: [
+                                    const Icon(
+                                      Icons.power_settings_new,
+                                      color: Colors.white,
+                                    ),
+                                    SizedBox(
+                                      width: 10,
+                                    ),
+                                    GestureDetector(
+                                      onTap: () async {
+                                        await signOut();
+                                      },
+                                      child: Text(
+                                        "SignOut",
+                                        style: GoogleFonts.manrope(
+                                          fontSize: 14,
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.w600,
+                                        ),
+                                      ),
+                                    )
+                                  ],
+                                ),
+                                SizedBox(
+                                  height: 10,
+                                ),
+                                Text(
+                                  "Hey, Aman",
+                                  style: GoogleFonts.manrope(
                                     fontSize: 22,
                                     color: Colors.white,
-                                    fontWeight: FontWeight.w600)),
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ),
+                              ],
+                            ),
+                            // FutureBuilder<String>(
+                            //   future: userNameFuture,
+                            //   builder: (context, snapshot) {
+                            //     if (snapshot.connectionState == ConnectionState.done) {
+                            //       return Text(
+                            //         "Hey, ${snapshot.data}",
+                            //         style: GoogleFonts.manrope(
+                            //           fontSize: 22,
+                            //           color: Colors.white,
+                            //           fontWeight: FontWeight.w600,
+                            //         ),
+                            //       );
+                            //     } else {
+                            //       return Text(
+                            //         "Loading...",
+                            //         style: GoogleFonts.manrope(
+                            //           fontSize: 22,
+                            //           color: Colors.white,
+                            //           fontWeight: FontWeight.w600,
+                            //         ),
+                            //       );
+                            //     }
+                            //   },
+                            // ),
+
                             const Spacer(),
                             IconButton(
-                                onPressed: () {},
-                                icon: SvgPicture.asset(AppIcons.cartIcon)),
+                              onPressed: () {},
+                              icon: SvgPicture.asset(AppIcons.cartIcon),
+                            ),
                           ],
                         ),
                         const SearchBarWidget(),
@@ -75,12 +138,8 @@ class _HomeViewState extends State<HomeView> {
                   ),
                 ),
                 const Recommended(),
-
-
-
-               const OffersContainersTwo(),
-              const SizedBox( height: 8),
-
+                const OffersContainersTwo(),
+                const SizedBox(height: 8),
                 Padding(
                   padding: const EdgeInsets.only(right: 120),
                   child: Text(
@@ -94,13 +153,13 @@ class _HomeViewState extends State<HomeView> {
                   ),
                 ),
                 const RecommendedTwo(),
-               const SizedBox(
+                const SizedBox(
                   height: 10,
                 )
               ],
             ),
           ),
-          ),
+        ),
       ),
     );
   }

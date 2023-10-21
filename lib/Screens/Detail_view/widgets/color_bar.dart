@@ -170,7 +170,11 @@ class _CustomColorBarState extends State<CustomColorBar> {
                 buttonText: 'Add to Cart',
                 buttonColor: selectedColor,
                 onPressed: () {
-                  widget.onAddToCart(widget.itemData);
+                  if (itemCount == 0) {
+                    print("add items");
+                  } else {
+                    widget.onAddToCart(widget.itemData);
+                  }
                 },
                 itemCount: itemCount,
               )

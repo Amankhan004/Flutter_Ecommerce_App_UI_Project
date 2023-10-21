@@ -105,7 +105,7 @@ class RecommendedTwo extends StatelessWidget {
                                       ),
                                       TextSpan(
                                         text:
-                                            ' \$${item.price.toStringAsFixed(2)}', 
+                                            ' \$${item.price.toStringAsFixed(2)}',
                                         style: const TextStyle(
                                           fontSize: 18,
                                           fontWeight: FontWeight.w600,
@@ -116,10 +116,15 @@ class RecommendedTwo extends StatelessWidget {
                                   ),
                                 ),
                               ),
-                            
                               GestureDetector(
                                 onTap: () {
-                                   Navigator.push(context, MaterialPageRoute(builder: (_)=> DetailScreen(index: index,restIndex: 0,)));
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (_) => DetailScreen(
+                                                index: index,
+                                                restIndex: 1,
+                                              )));
                                 },
                                 child: Container(
                                   decoration: BoxDecoration(
@@ -137,7 +142,7 @@ class RecommendedTwo extends StatelessWidget {
                                   child: Padding(
                                     padding: const EdgeInsets.all(8.0),
                                     child: SvgPicture.asset(
-                                      'Assets/App_images/plus-outline (3) 1.svg', 
+                                      'Assets/App_images/plus-outline (3) 1.svg',
                                       width: 16,
                                       height: 16,
                                     ),

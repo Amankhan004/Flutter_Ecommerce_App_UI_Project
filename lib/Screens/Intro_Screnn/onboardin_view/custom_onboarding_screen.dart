@@ -17,7 +17,8 @@ class CustomIntroScreen extends StatelessWidget {
       required this.animation1,
       required this.animation2,
       this.animation1Height,
-      this.animation2Height, this.screenPadding});
+      this.animation2Height,
+      this.screenPadding});
 
   final String? text1;
   final String? text2;
@@ -27,7 +28,7 @@ class CustomIntroScreen extends StatelessWidget {
   final bool displayAnimation1;
   final double? animation1Height;
   final double? animation2Height;
-    final EdgeInsets? screenPadding;
+  final EdgeInsets? screenPadding;
   final PageController? controller;
 
   @override
@@ -38,6 +39,7 @@ class CustomIntroScreen extends StatelessWidget {
         statusBarColor: AppColors.lightBlue,
       ),
       child: Scaffold(
+        resizeToAvoidBottomInset: false,
         backgroundColor: AppColors.lightBlue,
         body: Padding(
           padding: const EdgeInsets.fromLTRB(50, 30, 0, 30),
@@ -113,8 +115,9 @@ class CustomIntroScreen extends StatelessWidget {
                   ),
                 ),
                 Padding(
-                  padding: screenPadding ??const EdgeInsets.fromLTRB(56, 0, 0, 0),
-                  child: const GetStartedButton(),
+                  padding:
+                      screenPadding ?? const EdgeInsets.fromLTRB(56, 0, 0, 0),
+                  child: GetStartedButton(),
                 ),
               ],
             ),

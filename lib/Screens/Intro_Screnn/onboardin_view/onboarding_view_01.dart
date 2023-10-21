@@ -23,7 +23,7 @@ class OnBoardingOne extends StatelessWidget {
             animation1: "lib/utils/Animation - 1694687878907.json",
             animation1Height: 330.0,
             animation2Height: 220.0,
-            screenPadding:const EdgeInsets.fromLTRB(56, 0, 0, 0),
+            screenPadding: const EdgeInsets.fromLTRB(56, 0, 0, 0),
           ),
           OnBoardingTwo(controller: controller)
         ],

@@ -1,3 +1,4 @@
+import 'package:ecommerce_app_complete_ui_project/utils/App_colors/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -11,39 +12,40 @@ class ForgetView extends StatefulWidget {
 class _ForgetViewState extends State<ForgetView> {
   TextEditingController emailcontroller = TextEditingController();
   FocusNode emailFocusNode = FocusNode();
-  bool showError = false; // Track if there's an error
-
-  // Replace with your valid email
-
+  bool showError = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: Color.fromARGB(255, 226, 226, 226),
       body: Padding(
         padding: const EdgeInsets.all(20),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const SizedBox(height: 80),
-          const  Text(
+            Text(
               "Forgot password",
               style: TextStyle(
                 fontFamily: 'Metropolis',
                 fontSize: 34,
                 fontWeight: FontWeight.w700,
-                color: Color(0xffF6F6F6),
+                color: Colors.grey.shade900,
               ),
               textAlign: TextAlign.left,
             ),
             const SizedBox(height: 50),
-          const  Text(
-              "Please, enter your email address. You will receive a link to create a new password via email.",
-              style: TextStyle(
+            Center(
+              child: Text(
+                "Please, enter your email address. You will receive a link to create a new password via email.",
+                style: TextStyle(
                   fontFamily: 'Metropolis',
-                  fontSize: 14,
-                  color: Color(0xffF6F6F6)),
+                  fontSize: 16,
+                  fontWeight: FontWeight.w400,
+                  color: Colors.grey.shade900,
+                ),
+              ),
             ),
-            const SizedBox(height: 10),
+            const SizedBox(height: 20),
             TextField(
               style: GoogleFonts.metrophobic(
                 fontSize: 14,
@@ -52,54 +54,41 @@ class _ForgetViewState extends State<ForgetView> {
               controller: emailcontroller,
               focusNode: emailFocusNode, // Assign focus node
               decoration: InputDecoration(
-                hintText: "Email",
-                hintStyle:const TextStyle(
-                  fontFamily: 'Metropolis',
-                  fontSize: 11,
-                  color: Color(0xffABB4BD),
-                ),
-                fillColor: Color(0xff1D1D1D),
-                filled: true,
-                errorText: showError
-                    ? "Not a valid email address"
-                    : null, // Show error message
-                errorStyle:const TextStyle(
-                  fontFamily: 'Metropolis',
-                  fontSize: 11,
-                  color: Color(0xffFF2424),
-                ),
-                enabledBorder: OutlineInputBorder(
-                  borderSide: BorderSide(
-                    color: showError
-                        ? Color(0xffFF2424)
-                        : Color.fromARGB(255, 12, 12, 12),
-                  ),
-                ),
                 focusedBorder: OutlineInputBorder(
                   borderSide: BorderSide(
-                    color: showError
-                        ? Color(0xffFF2424)
-                        : Color.fromARGB(255, 8, 8, 8),
+                    color: Colors.grey.shade400,
                   ),
                 ),
+                enabledBorder: const OutlineInputBorder(
+                  borderSide: BorderSide(
+                    color: Colors.white,
+                  ),
+                ),
+                hintText: "Password",
+                hintStyle: TextStyle(
+                  fontFamily: 'Metropolis',
+                  fontSize: 14,
+                  color: Colors.grey.shade600,
+                ),
+                fillColor: Colors.grey.shade200,
+                filled: true,
               ),
             ),
-            const SizedBox(height: 15),
+            const SizedBox(height: 25),
             InkWell(
               onTap: () {
                 // Check if the entered email matches the valid email
-              
               },
               child: Center(
                 child: Container(
                   width: 357,
                   height: 48,
                   decoration: BoxDecoration(
-                    color: Color(0xffEF3651),
+                    color: AppColors.lightBlue,
                     borderRadius: BorderRadius.circular(25),
                   ),
                   alignment: Alignment.center,
-                  child:const Text(
+                  child: const Text(
                     "SEND",
                     style: TextStyle(
                       fontFamily: 'Metropolis',
