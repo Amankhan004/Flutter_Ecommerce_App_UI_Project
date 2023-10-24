@@ -1,4 +1,3 @@
-import 'package:ecommerce_app_complete_ui_project/Screens/Home_View/home_view.dart';
 import 'package:ecommerce_app_complete_ui_project/Screens/bottom_navbar/bottom_navbar.dart';
 import 'package:ecommerce_app_complete_ui_project/Screens/login/signup/login.dart';
 import 'package:firebase_auth/firebase_auth.dart';

@@ -1,9 +1,9 @@
+import 'package:ecommerce_app_complete_ui_project/Screens/add_to_card/widgets/att_to_card.dart';
 import 'package:ecommerce_app_complete_ui_project/Screens/add_to_card/widgets/custom_calculation.dart';
 import 'package:ecommerce_app_complete_ui_project/Widgets/custom_button.dart';
 import 'package:ecommerce_app_complete_ui_project/Widgets/custom_textfield.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-
 
 class AddCardScreen extends StatefulWidget {
   const AddCardScreen({
@@ -108,7 +108,9 @@ class _AddCardScreenState extends State<AddCardScreen> {
             const SizedBox(
               height: 100,
             ),
-            CustomCalculation(),
+            CustomCalculation(
+              items: cartItems,
+            ),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: GestureDetector(

@@ -1,5 +1,7 @@
 import 'package:ecommerce_app_complete_ui_project/Data/category_data/restaurants_data.dart';
 import 'package:ecommerce_app_complete_ui_project/Screens/Detail_view/widgets/add_to_cart_button.dart';
+import 'package:ecommerce_app_complete_ui_project/Screens/add_to_card/widgets/att_to_card.dart';
+import 'package:ecommerce_app_complete_ui_project/Widgets/custom_toast.dart';
 import 'package:flutter/material.dart';
 import 'package:ecommerce_app_complete_ui_project/utils/App_colors/colors.dart';
 
@@ -44,6 +46,11 @@ class _CustomColorBarState extends State<CustomColorBar> {
       selectedColor = color;
     });
     widget.onColorChanged(selectedColor);
+  }
+
+  bool isItemInCart() {
+    // Check if the itemData is in the cartItems list
+    return cartItems.contains(widget.itemData);
   }
 
   @override
@@ -171,9 +178,14 @@ class _CustomColorBarState extends State<CustomColorBar> {
                 buttonColor: selectedColor,
                 onPressed: () {
                   if (itemCount == 0) {
-                    print("add items");
+                    showCustomToast("Add At Least 1 Item");
                   } else {
-                    widget.onAddToCart(widget.itemData);
+                    if (isItemInCart()) {
+                      showCustomToast("Item Already in Cart");
+                    } else {
+                      showCustomToast("Item Added To Cart");
+                      widget.onAddToCart(widget.itemData);
+                    }
                   }
                 },
                 itemCount: itemCount,

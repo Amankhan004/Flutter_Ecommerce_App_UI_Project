@@ -8,3 +8,13 @@ void addToCart(ItemData item) {
 void removeFromCart(ItemData item) {
   cartItems.remove(item);
 }
+
+List<int> itemCounts = []; // Initialize an empty list of counts.
+int quantity = 1;
+addQuantity() {
+  quantity++;
+}
+
+subQuantity() {
+  quantity--;
+}

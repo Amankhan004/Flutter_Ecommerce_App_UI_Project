@@ -1,11 +1,10 @@
 import 'package:ecommerce_app_complete_ui_project/Data/category_data/restaurants_data.dart';
-import 'package:ecommerce_app_complete_ui_project/Screens/bottom_navbar/bottom_navbar.dart';
 import 'package:ecommerce_app_complete_ui_project/Screens/category_View/category_view.dart';
 import 'package:ecommerce_app_complete_ui_project/Widgets/custom_toast.dart';
-import 'package:ecommerce_app_complete_ui_project/resources/items_data.dart';
 import 'package:ecommerce_app_complete_ui_project/utils/App_colors/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
 
@@ -144,7 +143,8 @@ class _FavouriteItemsState extends State<FavouriteItems> {
                       ),
                       trailing: GestureDetector(
                         onTap: () {
-                          showSnackBar(context, itemRemoved);
+                          
+                          showCustomToast("Item Removed From Favourites");
                           setState(() {
                             widget.favoriteItems.removeAt(index);
                           });

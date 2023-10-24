@@ -2,7 +2,6 @@ import 'package:ecommerce_app_complete_ui_project/Screens/add_to_card/widgets/ad
 import 'package:ecommerce_app_complete_ui_project/Screens/add_to_card/widgets/att_to_card.dart';
 import 'package:ecommerce_app_complete_ui_project/Screens/add_to_card/widgets/custom_calculation.dart';
 import 'package:ecommerce_app_complete_ui_project/Screens/bottom_navbar/bottom_navbar.dart';
-import 'package:ecommerce_app_complete_ui_project/Screens/category_View/category_view.dart';
 import 'package:ecommerce_app_complete_ui_project/Screens/checkout_view/checkout_view.dart';
 import 'package:ecommerce_app_complete_ui_project/Widgets/custom_button.dart';
 import 'package:flutter/material.dart';
@@ -173,7 +172,7 @@ class _AddToCartViewState extends State<AddToCartView> {
             items: cartItems,
           ),
         
-          CustomCalculation(),
+        CustomCalculation(items: cartItems,), // Add this line
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: InkWell(

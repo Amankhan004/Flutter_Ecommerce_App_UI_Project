@@ -4,15 +4,14 @@ import 'package:ecommerce_app_complete_ui_project/Screens/Home_View/widgets/offe
 import 'package:ecommerce_app_complete_ui_project/Screens/Home_View/widgets/recommended_view.dart';
 import 'package:ecommerce_app_complete_ui_project/Screens/Home_View/widgets/recommended_view_02.dart';
 import 'package:ecommerce_app_complete_ui_project/Screens/Home_View/widgets/search_bar.dart';
+import 'package:ecommerce_app_complete_ui_project/Screens/login/signup/login.dart';
 import 'package:ecommerce_app_complete_ui_project/resources/app_Icons.dart';
 import 'package:ecommerce_app_complete_ui_project/utils/App_colors/colors.dart';
 import 'package:ecommerce_app_complete_ui_project/utils/services/firebase_auth.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:google_sign_in/google_sign_in.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({Key? key}) : super(key: key);
@@ -22,8 +21,6 @@ class HomeView extends StatefulWidget {
 }
 
 class _HomeViewState extends State<HomeView> {
-  // Future<String> userNameFuture = getUserNameFromFirestore();
-
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -58,6 +55,16 @@ class _HomeViewState extends State<HomeView> {
                                     GestureDetector(
                                       onTap: () async {
                                         await signOut();
+                                        await signOutEmail();
+                                        Navigator.pushAndRemoveUntil(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) => LoginView(),
+                                          ),
+                                          (route) => false,
+                                        );
+                                        Navigator.popUntil(
+                                            context, (route) => route.isFirst);
                                       },
                                       child: Text(
                                         "SignOut",
@@ -84,8 +91,9 @@ class _HomeViewState extends State<HomeView> {
                               ],
                             ),
                             // FutureBuilder<String>(
-                            //   future: userNameFuture,
-                            //   builder: (context, snapshot) {
+                            //   future: getUserNameFromFirestore(),
+                            //   builder:
+                            //    (context, snapshot) {
                             //     if (snapshot.connectionState == ConnectionState.done) {
                             //       return Text(
                             //         "Hey, ${snapshot.data}",

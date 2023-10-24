@@ -1,5 +1,6 @@
 import 'package:ecommerce_app_complete_ui_project/Data/category_data/restaurants_data.dart';
 import 'package:ecommerce_app_complete_ui_project/Screens/add_to_card/widgets/att_to_card.dart';
+import 'package:ecommerce_app_complete_ui_project/Widgets/custom_toast.dart';
 import 'package:ecommerce_app_complete_ui_project/utils/App_colors/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -15,24 +16,36 @@ class AddToCartItems extends StatefulWidget {
 }
 
 class _AddToCartItemsState extends State<AddToCartItems> {
-  int itemCount = 1;
+  @override
+  void initState() {
+    super.initState();
+    itemCounts = List.generate(widget.items.length, (index) => 1);
+  }
+  
 
-  void incrementItem() {
+  void incrementItem(int index) {
+    addQuantity();
     setState(() {
-      itemCount++;
+      itemCounts[index]++;
     });
   }
 
-  void decrementItem(ItemData item) {
-    setState(() {
-      itemCount--;
-    });
-  }
-
-  void deleteItem(ItemData item) {
-    if (itemCount == 0) {
+  void decrementItem(int index) {
+    if (itemCounts[index] >= 0) {
+      subQuantity();
       setState(() {
-        removeFromCart(item);
+        itemCounts[index]--;
+      });
+    }
+  }
+
+  void deleteItem(int index) {
+    if (itemCounts[index] == 0) {
+      // Remove the item at the given index from the cart.
+      showCustomToast("Item Removed From Cart");
+      setState(() {
+        widget.items.removeAt(index);
+        itemCounts.removeAt(index);
       });
     }
   }
@@ -124,8 +137,8 @@ class _AddToCartItemsState extends State<AddToCartItems> {
                               width: 33,
                               child: InkWell(
                                 onTap: () {
-                                  decrementItem(itemData);
-                                  deleteItem(itemData);
+                                  decrementItem(index);
+                                  deleteItem(index);
                                 },
                                 child: const Icon(Icons.remove),
                               ),
@@ -144,7 +157,7 @@ class _AddToCartItemsState extends State<AddToCartItems> {
                                 onTap: () {},
                                 child: Center(
                                   child: Text(
-                                    itemCount.toString(),
+                                    itemCounts[index].toString(),
                                     style: const TextStyle(
                                         fontSize: 20, color: Colors.black),
                                   ),
@@ -163,11 +176,12 @@ class _AddToCartItemsState extends State<AddToCartItems> {
                               width: 33,
                               child: InkWell(
                                 onTap: () {
-                                  incrementItem();
+                                  incrementItem(index);
                                 },
                                 child: const Icon(Icons.add),
                               ),
                             ),
+                            
                           ],
                         ),
                       ),

@@ -1,7 +1,7 @@
-import 'package:ecommerce_app_complete_ui_project/Screens/bottom_navbar/bottom_navbar.dart';
 import 'package:ecommerce_app_complete_ui_project/Screens/login/signup/login.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 // ignore: must_be_immutable
 class GetStartedButton extends StatelessWidget {
@@ -11,8 +11,11 @@ class GetStartedButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {
-        Navigator.push(context, MaterialPageRoute(builder: (_) => LoginView()));
+      onTap: () async {
+        SharedPreferences prefs = await SharedPreferences.getInstance();
+        prefs.setBool('showOnboarding', false);
+        Navigator.pushAndRemoveUntil(context,
+            MaterialPageRoute(builder: (_) => LoginView()), ((route) => false));
         // Navigator.push(context, MaterialPageRoute(builder: (_)=>  MainMenuView()));
       },
       child: Container(
